@@ -1,0 +1,110 @@
+<!-- <div class="container">
+    <h2 class="mt-5">Report a Pet</h2>
+    <form [formGroup]="petForm" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="pet_type">Pet Type</label>
+            <select class="form-control" name="pet_type" formControlName="pet_type">
+                <option value="">Select Pet Type</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="rabbit">Rabbit</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="location">Pet Name</label>
+            <input class="form-control" type="text" name="pet_name" formControlName="pet_name">
+        </div>
+        <div class="mb-3">
+            <label for="location">Location</label>
+            <input class="form-control" type="text" name="location" formControlName="location">
+        </div>
+        <div class="mb-3">
+            <label for="description">Description</label>
+            <textarea class="form-control" type="text" name="description" formControlName="description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="contact_info">Contact Info</label>
+            <input class="form-control" type="text" name="contact_info" formControlName="contact_info">
+        </div>
+        <div class="mb-3">
+            <label for="file_upload">Choose File</label>
+            <input class="form-control" type="file" name="files" (change)="onFileSelect($event)" accept="image/*" />
+        </div>
+        <button class="btn mb-5" (click)="submitForm()">Submit</button>
+    </form>
+</div> -->
+
+<div class="container">
+    <h2 *ngIf="!formSubmitted" class="mt-2">Report a Lost Pet</h2>
+
+    <div *ngIf="formSubmitted" class="text-center">
+        <h3>{{ successMessage }}</h3>
+        <img src="/assets/images/th.jpg" alt="Thank You" class="mt-2" width="500px">
+    </div>
+
+    <form *ngIf="!formSubmitted" [formGroup]="petForm" method="post" enctype="multipart/form-data">
+        
+        <!-- Pet Type -->
+        <div class="mb-3">
+            <label for="pet_type">Pet Type</label>
+            <select class="form-control" name="pet_type" formControlName="pet_type">
+                <option value="">Select Pet Type</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="rabbit">Rabbit</option>
+                <option value="other">Other</option>
+            </select>
+            <div *ngIf="petForm.get('pet_type').invalid && petForm.get('pet_type').touched" class="text-danger">
+                Pet type is required.
+            </div>
+        </div>
+
+        <!-- Pet Name -->
+        <div class="mb-3">
+            <label for="pet_name">Pet Name</label>
+            <input class="form-control" type="text" name="pet_name" formControlName="pet_name">
+        </div>
+
+        <!-- Location -->
+        <div class="mb-3">
+            <label for="location">Location</label>
+            <input class="form-control" type="text" name="location" formControlName="location">
+            <div *ngIf="petForm.get('location').invalid && petForm.get('location').touched" class="text-danger">
+                Location is required.
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+            <label for="description">Description</label>
+            <textarea class="form-control" name="description" formControlName="description"></textarea>
+            <div *ngIf="petForm.get('description').invalid && petForm.get('description').touched" class="text-danger">
+                Description is required.
+            </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="mb-3">
+            <label for="contact_info">Contact Info</label>
+            <input class="form-control" type="text" name="contact_info" formControlName="contact_info">
+            <div *ngIf="petForm.get('contact_info').invalid && petForm.get('contact_info').touched" class="text-danger">
+                Contact information is required.
+            </div>
+        </div>
+
+        <!-- File Upload with Image Preview -->
+        <div class="mb-3">
+            <label for="file_upload">Choose Pet Photo</label>
+            <input class="form-control" type="file" name="files" (change)="onFileSelect($event)" accept="image/*" />
+        </div>
+
+        <!-- Image Preview -->
+        <div *ngIf="preview" class="mb-3">
+            <img [src]="preview" alt="Selected Image" class="img-thumbnail" width="200" />
+        </div>
+
+        <!-- Submit Button -->
+        <button class="btn btn-primary mb-2" [disabled]="petForm.invalid" (click)="submitForm()">Submit</button>
+    </form>
+</div>

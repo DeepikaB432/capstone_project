@@ -1,0 +1,62 @@
+<section>
+    <div class="text-center mt-5">
+        <h2>Contact Us</h2>
+    </div>
+    <div class="container mt-5">
+        <!-- <div class="alert alert-success alert-dismissible" >
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> Email sent successfully!!!!!!
+        </div>
+ 
+        <div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Error!</strong> Email failed!!!!!!
+        </div> -->
+        <div class="row" style="gap: 50px;">
+        <div class="card col-md-6 p-4">
+            <h2>Send Us a Message</h2>
+            <form #emailForm="ngForm" (ngSubmit)="sendEmail(emailForm)">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="name" placeholder="Name" name="name"
+                                [(ngModel)]="emailDetails.name" [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="to_email" placeholder="Email" name="to_email"
+                                [(ngModel)]="emailDetails.to_email" [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="subject" placeholder="Subject" name="subject"
+                                [(ngModel)]="emailDetails.subject" [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="8" id="comment" placeholder="Message"
+                                [(ngModel)]="emailDetails.message" [ngModelOptions]="{standalone: true}"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card col-md-5 p-4">
+            <h2>Contact Information</h2>
+        </div>
+    </div>
+
+    </div>
+</section>

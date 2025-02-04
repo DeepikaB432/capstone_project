@@ -1,0 +1,12 @@
+h2{
+    color: #1D5F65;
+}
+.btn-primary{
+    background-color: #1D5F65;
+    border-color: #1D5F65;
+}
+.card{
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    gap:20px;
+}

@@ -1,0 +1,12 @@
+.footer{
+    display:grid;
+    bottom: 0;
+    position: relative;
+    width: 100%;
+    background-color: #1D5F65;
+    color: white;
+    /* margin-top: 25px; */
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+}
+

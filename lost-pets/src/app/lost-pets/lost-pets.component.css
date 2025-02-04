@@ -1,0 +1,125 @@
+/* Lost Pets Container */
+.lost-pets-container {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Search Filters */
+.search-filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-filters .form-control {
+    width: 30%;
+}
+
+/* Pet Cards Container */
+.pet-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+/* Individual Pet Card */
+.pet-card {
+    width: 100%;
+    max-width: 350px; /* Increased width */
+    background: #f1ebe1;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px; /* Increased padding */
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    margin: 10px; /* Added margin for spacing between cards */
+}
+
+.pet-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.pet-card img {
+    width: 100%;
+    height: 220px; /* Increased image height */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.pet-card h3 {
+    font-size: 1.6em; /* Slightly larger font size */
+    color: #333;
+    margin: 10px 0;
+}
+
+.pet-card p {
+    font-size: 1em;
+    color: #555;
+    margin: 5px 0;
+}
+
+.pet-card button {
+    background-color: #e2a12a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.pet-card button:hover {
+    background-color: #e2a12a;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pagination button {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: #e2a12a;
+    color: white;
+}
+
+.pagination button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+a {
+    color: #004950;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #004950;
+}

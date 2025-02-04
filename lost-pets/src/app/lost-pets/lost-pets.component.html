@@ -1,0 +1,40 @@
+<div class="lost-pets-container">
+    <h1>All Pets Listings</h1> 
+
+    <!-- <div class="search-filters">
+        <input class="form-control" type="text" id="search-pet" placeholder="Search for pets...">
+        <select class="form-control" id="pet_type">
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="rabbit">Rabbit</option>
+            <option value="other">Other</option>
+        </select>
+        <button class="btn btn-primary">Apply Filters</button>
+    </div> -->
+
+    <p style="text-align: center;">
+        <a>All</a>
+        <a>Dogs</a>
+        <a>Cat</a>
+        <a>Rabbit</a>
+        <a>Other</a>
+    </p>
+
+    <div class="pet-cards">
+        <div *ngFor="let data of pets_data" class="pet-card">
+            <img [src]="'http://localhost:3000/' + data.file_path" alt="Pet Image">
+            <h3>{{data.pet_name || 'No Name'}}</h3>
+            <p>Pet Type: {{data.pet_type}}</p>
+            <p>Description: {{data.description}}</p>
+            <p>Location: {{data.location}}</p>
+            <button class="btn">Contact Info</button>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <button>&lt;&lt; Previous</button>
+        <button>1</button>
+        <button>2</button>
+        <button>Next &gt;&gt;</button>
+    </div>
+</div>
