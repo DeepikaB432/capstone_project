@@ -23,6 +23,10 @@ export const routes: Routes = [
         component:LostPetsComponent,
     },
     {
+        path: 'lost-pets/:petType',
+        component: LostPetsComponent
+    },
+    {
         path:'add-pet',
         component:AddPetComponent,
     },

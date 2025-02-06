@@ -1,27 +1,16 @@
 <div class="lost-pets-container">
     <h1>All Pets Listings</h1> 
 
-    <!-- <div class="search-filters">
-        <input class="form-control" type="text" id="search-pet" placeholder="Search for pets...">
-        <select class="form-control" id="pet_type">
-            <option value="dog">Dog</option>
-            <option value="cat">Cat</option>
-            <option value="rabbit">Rabbit</option>
-            <option value="other">Other</option>
-        </select>
-        <button class="btn btn-primary">Apply Filters</button>
-    </div> -->
-
-    <p style="text-align: center;">
-        <a>All</a>
-        <a>Dogs</a>
-        <a>Cat</a>
-        <a>Rabbit</a>
-        <a>Other</a>
-    </p>
+    <div class="pets-filter-container">
+        <a (click)="filterPets('')" [class.active]="!filterActive">All</a>
+        <a (click)="filterPets('dog')" [class.active]="filterActive === 'dog'">Dogs</a>
+        <a (click)="filterPets('cat')" [class.active]="filterActive === 'cat'" >Cats</a>
+        <a (click)="filterPets('rabbit')" [class.active]="filterActive === 'rabbit'">Rabbits</a>
+        <a (click)="filterPets('other')" [class.active]="filterActive === 'other'">Other</a>
+    </div>
 
     <div class="pet-cards">
-        <div *ngFor="let data of pets_data" class="pet-card">
+        <div *ngFor="let data of filteredData" class="pet-card">
             <img [src]="'http://localhost:3000/' + data.file_path" alt="Pet Image">
             <h3>{{data.pet_name || 'No Name'}}</h3>
             <p>Pet Type: {{data.pet_type}}</p>

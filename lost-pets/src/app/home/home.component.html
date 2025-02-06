@@ -12,9 +12,9 @@
 
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-3">
-      <a routerLink="/lost-pets">
-        <div class="card" style="width: 18rem;">
+    <div class="col-12 col-md-3 mb-4">
+      <a [routerLink]="['/lost-pets', 'dog']">
+        <div class="card" style="width: 100%;">
           <img class="card-img-top"
             src="https://tse4.mm.bing.net/th?id=OIP.F7QWYr2AWdxfu-5zrFbhxQHaFj&pid=Api&P=0&h=180" alt="Card image cap">
           <div class="card-body">
@@ -24,9 +24,10 @@
         </div>
       </a>
     </div>
-    <div class="col-md-3">
-      <a routerLink="/lost-pets">
-        <div class="card" style="width: 18rem;">
+
+    <div class="col-12 col-md-3 mb-4">
+      <a [routerLink]="['/lost-pets', 'cat']">
+        <div class="card" style="width: 100%;">
           <img class="card-img-top"
             src="https://tse1.mm.bing.net/th?id=OIP.Gh8QtnFEh8LOj1a6-Q88FQHaFj&pid=Api&P=0&h=180" alt="Card image cap">
           <div class="card-body">
@@ -36,9 +37,10 @@
         </div>
       </a>
     </div>
-    <div class="col-md-3">
-      <a routerLink="/lost-pets">
-        <div class="card" style="width: 18rem;">
+
+    <div class="col-12 col-md-3 mb-4">
+      <a [routerLink]="['/lost-pets', 'rabbit']">
+        <div class="card" style="width: 100%;">
           <img class="card-img-top" src="http://wallpapercave.com/wp/1IIYezv.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="text-align-card">Rabbits</h5>
@@ -47,9 +49,10 @@
         </div>
       </a>
     </div>
-    <div class="col-md-3">
-      <a routerLink="/lost-pets">
-        <div class="card" style="width: 18rem;">
+
+    <div class="col-12 col-md-3 mb-4">
+      <a [routerLink]="['/lost-pets', 'other']">
+        <div class="card" style="width: 100%;">
           <img class="card-img-top" src="https://wallpaperfx.com/view_image/two-blue-birds-1280x960-wallpaper-17127.jpg"
             alt="Card image cap">
           <div class="card-body">
@@ -59,20 +62,20 @@
         </div>
       </a>
     </div>
-
   </div>
 </div>
 
 <section class="section">
-<div class="container">
-  <div class="row">
-    <h2 class="mt-5" style="color: #004950;">Found a lost pet? 
-      <span style="color: #5cd1d6;">Let’s get them back home!</span>
-    </h2>
-    <p class="mt-3" style="color: #004950; text-align: center; font-weight: 600;">Share information about the pet you’ve found, and we’ll help connect them with their owner.</p>
+  <div class="container">
+    <div class="row">
+      <h2 class="mt-5" style="color: #004950;">Found a lost pet?
+        <span style="color: #5cd1d6;">Let’s get them back home!</span>
+      </h2>
+      <p class="mt-3" style="color: #004950; text-align: center; font-weight: 600;">Share information about the pet
+        you’ve found, and we’ll help connect them with their owner.</p>
+    </div>
+    <div class="text-center">
+      <button class="btn" type="button" routerLink="/add-pet">Lost/Found Pet Alert</button>
+    </div>
   </div>
-  <div class="text-center">
-    <button class="btn" type="button" routerLink="/add-pet">Lost/Found Pet Alert</button>
-  </div>
-</div>
 </section>

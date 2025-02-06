@@ -1,18 +1,16 @@
-<!-- {{isAuthenticated}} -->
-<!-- *ngIf="isAuthenticated" -->
 <nav class="navbar navbar-expand-sm navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" routerLink="/">
             <img src="https://napahumane.org/wp-content/uploads/2017/07/Lost-pet-49367087-square.jpg" alt="Lost Pets"
                 style="width:50px;" class="rounded-pill">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar" aria-controls="mynavbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/" routerLinkActive="active">Paw & Fur Trackers</a>
+                    <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Paw & Fur Trackers</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/lost-pets" routerLinkActive="active">Lost Pets</a>
@@ -27,14 +25,14 @@
                     <a class="nav-link" routerLink="/contact-us" routerLinkActive="active">Contact Us</a>
                 </li>
             </ul>
-            <ul class="navbar-nav">{{isAuthenticated}}
-                <li *ngIf="isAuthenticated" class="nav-item">
+            <ul class="navbar-nav ms-auto">
+                <li *ngIf="!isAuthenticated" class="nav-item">
                     <a class="nav-link" routerLink="/signin" routerLinkActive="active">Sign In</a>
                 </li>
-                <li *ngIf="isAuthenticated" class="nav-item">
+                <li *ngIf="!isAuthenticated" class="nav-item">
                     <a class="nav-link" routerLink="/signup" routerLinkActive="active">Sign Up</a>
                 </li>
-                <li *ngIf="!isAuthenticated" class="nav-item">
+                <li *ngIf="isAuthenticated" class="nav-item">
                     <a class="nav-link" style="cursor: pointer;" (click)="logout()">LogOut</a>
                 </li>
             </ul>

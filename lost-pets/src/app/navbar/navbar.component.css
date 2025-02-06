@@ -5,3 +5,9 @@
 .nav-link{
     color: white;
 }
+
+
+.navbar .nav-link.active {
+    /* background-color: #1D5F65; */
+    color: #e2a12a;
+}
