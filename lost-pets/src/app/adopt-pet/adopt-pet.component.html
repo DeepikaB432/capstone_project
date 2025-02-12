@@ -3,69 +3,40 @@
     <div class="row">
         <div class="col-12 text-center">
             <h1>Adopt a Pet</h1>
-            <p>Find your new best friend today! Browse through the available pets.</p>
+            <p class="mt-3" style="color: #004950; font-weight: bold;">Find your new best friend today! Browse through
+                the available pets.</p>
         </div>
     </div>
 
     <!-- Search Filters Section -->
-    <div class="row mb-4">
-        <div class="col-md-4">
-            <select class="form-control" >
-                <option value="">All Pets</option>
-                <option value="dog">Dogs</option>
-                <option value="cat">Cats</option>
-                <option value="rabbit">Rabbits</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-        <div class="col-md-4">
-            <select class="form-control" >
-                <option value="">All Sizes</option>
-                <option value="small">Small</option>
-                <option value="medium">Medium</option>
-                <option value="large">Large</option>
-            </select>
-        </div>
+    <div class="pets-filter-container mt-3">
+        <a (click)="filterPetsByType('')" [class.active]="!filterActive">All</a>
+        <a (click)="filterPetsByType('dog')" [class.active]="filterActive === 'dog'">Dogs</a>
+        <a (click)="filterPetsByType('cat')" [class.active]="filterActive === 'cat'">Cats</a>
+        <a (click)="filterPetsByType('rabbit')" [class.active]="filterActive === 'rabbit'">Rabbits</a>
+        <a (click)="filterPetsByType('other')" [class.active]="filterActive === 'other'">Other</a>
     </div>
 
     <!-- Pet Cards Section -->
-    <div class="row">
-        <div class="col-12 col-md-3 mb-4" *ngFor="let pet of filteredPets">
-            <div class="card">
-                <img class="card-img-top" [src]="'http://localhost:3000/' + pet.file_path" alt="Pet Image">
-                <div class="card-body">
-                    <h5 class="card-title">{{ pet.pet_name }}</h5>
-                    <p class="card-text">Type: {{ pet.pet_type }}</p>
-                    <p class="card-text">Age: {{ pet.age }} years</p>
-                    <p class="card-text">Size: {{ pet.size }}</p>
-                    <button class="btn btn-primary" (click)="showPetDetails(pet)">View Details</button>
+    <div class="row mt-5">
+        <div class="col-12 col-md-3 mb-4"
+            *ngFor="let pet of filteredPets | paginate: { itemsPerPage: pageSize, currentPage: p }">
+            <div class="pet-card">
+                <!-- Display the pet image or a default image if pet has no image -->
+                <img class="pet-image"
+                    [src]="'http://localhost:3000/' + (pet.file_path || '/assets/images/notavailable.jpg')"
+                    alt="Pet Image">
+                <div class="pet-details">
+                    <h5 class="pet-title">{{ pet.pet_name || 'No Name' }}</h5>
+                    <p class="pet-type">Type: {{ pet.pet_type }}</p>
+                    <p class="pet-age">Description: {{ pet.description }} years</p>
+                    <p class="pet-size">Location: {{ pet.location }}</p>
+                    <button class="btn" routerLink="/contact-us">Contact Us</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<!-- Modal for Pet Details (Optional) -->
-<div class="modal fade" id="petDetailsModal" tabindex="-1" aria-labelledby="petDetailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="petDetailsModalLabel">Pet Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p><strong>Name:</strong> {{ selectedPet?.pet_name }}</p>
-                <p><strong>Type:</strong> {{ selectedPet?.pet_type }}</p>
-                <p><strong>Age:</strong> {{ selectedPet?.age }} years</p>
-                <p><strong>Description:</strong> {{ selectedPet?.description }}</p>
-                <p><strong>Size:</strong> {{ selectedPet?.size }}</p>
-                <p><strong>Location:</strong> {{ selectedPet?.location }}</p>
-                <p><strong>Contact Info:</strong> {{ selectedPet?.contact_info }}</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="initiateAdoption()">Initiate Adoption</button>
-            </div>
-        </div>
+    <div class="pagination">
+        <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
     </div>
 </div>

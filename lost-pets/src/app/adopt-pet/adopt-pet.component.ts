@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { PetsService } from '../pets.service';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-adopt-pet',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule, NgxPaginationModule],
   templateUrl: './adopt-pet.component.html',
-  styleUrls: ['./adopt-pet.component.css']
+  styleUrls: ['./adopt-pet.component.css'],
 })
 export class AdoptPetComponent implements OnInit {
-  pets_data: any ;
+  pets_data: any;
   filteredPets: any;
   selectedPet: any = null;
+  filterActive: string = '';
+  p: number = 1; // Current page for pagination
+  pageSize: number = 12; // Items per page
 
   constructor(private petService: PetsService) {}
 
@@ -25,33 +30,19 @@ export class AdoptPetComponent implements OnInit {
 
   // Filter pets by type (dog, cat, etc.)
   filterPetsByType(petType: string): void {
+    this.filterActive = petType;
     if (petType === '') {
       this.filteredPets = this.pets_data;
     } else {
-      this.filteredPets = this.pets_data.filter((pet:any) => pet.pet_type.toLowerCase() === petType.toLowerCase());
+      this.filteredPets = this.pets_data.filter(
+        (pet: any) => pet.pet_type.toLowerCase() === petType.toLowerCase()
+      );
     }
+    this.p = 1;
   }
 
-  // Filter pets by size (small, medium, large)
-  filterPetsBySize(size: string): void {
-    if (size === '') {
-      this.filteredPets = this.pets_data;
-    } else {
-      this.filteredPets = this.pets_data.filter((pet:any) => pet.size.toLowerCase() === size.toLowerCase());
-    }
-  }
-
-  // Show pet details in a modal
-  showPetDetails(pet: any): void {
-    this.selectedPet = pet;
-    // Display the modal using Bootstrap (can also use Angular Material Dialog or custom modals)
-    // const modal = new bootstrap.Modal(document.getElementById('petDetailsModal') as Element);
-    // modal.show();
-  }
-
-  // Initiate the adoption process
-  initiateAdoption(): void {
-    alert('You have initiated the adoption process!');
-    // This can be replaced with actual logic like filling out an adoption form or sending an email.
+  onPageChange(event: number): void {
+    this.p = event; // Set the current page number from the event
+    window.scrollTo(0, 0); // Scrolls to the top of the page
   }
 }

@@ -13,50 +13,57 @@
             <strong>Error!</strong> Email failed!!!!!!
         </div> -->
         <div class="row" style="gap: 50px;">
-        <div class="card col-md-6 p-4 mb-5">
-            <h2>Send Us a Message</h2>
-            <form #emailForm="ngForm" (ngSubmit)="sendEmail(emailForm)">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="name" placeholder="Name" name="name"
-                                [(ngModel)]="emailDetails.name" [ngModelOptions]="{standalone: true}">
+            <div class="card col-md-6 p-4 mb-5">
+                <h2>Send Us a Message</h2>
+                <form #emailForm="ngForm" (ngSubmit)="sendEmail(emailForm)">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="name" placeholder="Name" name="name"
+                                    [(ngModel)]="emailDetails.name" [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="mb-3">
+                                <input type="email" class="form-control" id="to_email" placeholder="Email"
+                                    name="to_email" [(ngModel)]="emailDetails.to_email"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-12">
-                        <div class="mb-3">
-                            <input type="email" class="form-control" id="to_email" placeholder="Email" name="to_email"
-                                [(ngModel)]="emailDetails.to_email" [ngModelOptions]="{standalone: true}">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="subject" placeholder="Subject"
+                                    name="subject" [(ngModel)]="emailDetails.subject"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="subject" placeholder="Subject" name="subject"
-                                [(ngModel)]="emailDetails.subject" [ngModelOptions]="{standalone: true}">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="8" id="comment" placeholder="Message"
+                                    [(ngModel)]="emailDetails.message" [ngModelOptions]="{standalone: true}"></textarea>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="8" id="comment" placeholder="Message"
-                                [(ngModel)]="emailDetails.message" [ngModelOptions]="{standalone: true}"></textarea>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
+            <div class="card col-md-5 p-4 mb-5">
+                <h2>Contact Information</h2>
+                <p><i class="fas fa-home me-3"></i> Calgary, Alberta</p>
+                <p><i class="fas fa-envelope me-3"></i> info&#64;example.com</p>
+                <p><i class="fas fa-phone me-3"></i> +01 234 567 88</p>
+                <p><i class="fas fa-print me-3"></i> +01 234 567 89</p>
+
+            </div>
         </div>
-        <div class="card col-md-5 p-4 mb-5">
-            <h2>Contact Information</h2>
-        </div>
-    </div>
 
     </div>
 </section>
