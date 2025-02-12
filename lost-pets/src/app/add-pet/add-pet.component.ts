@@ -7,10 +7,11 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PetsService } from '../pets.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-add-pet',
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule,CommonModule,RouterModule],
   templateUrl: './add-pet.component.html',
   styleUrl: './add-pet.component.css'
 })

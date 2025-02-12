@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { PetsService } from '../pets.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';  // Import NgxPaginationModule
 
 @Component({
   selector: 'app-lost-pets',
-  imports: [CommonModule],
+  imports: [CommonModule,NgxPaginationModule],
   templateUrl: './lost-pets.component.html',
   styleUrls: ['./lost-pets.component.css']
 })
@@ -17,6 +18,9 @@ export class LostPetsComponent {
   filteredData: any = []; 
   filterActive: string = ''; 
   petType: string = '';
+  collection = [];
+  p: number = 1;  // Current page for pagination
+  pageSize: number = 9; // Items per page
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -28,8 +32,7 @@ export class LostPetsComponent {
   getPetsData(): void {
     this.petService.getPetsData().subscribe((val) => {
       this.pets_data = val;
-      // this.filteredData = val; 
-      this.filterPets(this.petType); 
+      this.filterPets(this.petType);
     });
   }
 
@@ -42,5 +45,13 @@ export class LostPetsComponent {
         pet.pet_type.toLowerCase() === petType.toLowerCase()
       );
     }
+
+    this.p = 1;
+  }
+
+  onPageChange(event: number): void {
+    this.p = event; // Set the current page number from the event
+    window.scrollTo(0, 0);  // Scrolls to the top of the page
+
   }
 }

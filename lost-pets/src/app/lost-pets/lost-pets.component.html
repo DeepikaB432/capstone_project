@@ -10,7 +10,7 @@
     </div>
 
     <div class="pet-cards">
-        <div *ngFor="let data of filteredData" class="pet-card">
+        <div *ngFor="let data of filteredData | paginate: { itemsPerPage: pageSize, currentPage: p }" class="pet-card">
             <img [src]="'http://localhost:3000/' + data.file_path" alt="Pet Image">
             <h3>{{data.pet_name || 'No Name'}}</h3>
             <p>Pet Type: {{data.pet_type}}</p>
@@ -21,9 +21,6 @@
     </div>
 
     <div class="pagination">
-        <button>&lt;&lt; Previous</button>
-        <button>1</button>
-        <button>2</button>
-        <button>Next &gt;&gt;</button>
+        <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
     </div>
 </div>

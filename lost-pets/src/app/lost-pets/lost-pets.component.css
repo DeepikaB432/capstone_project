@@ -103,12 +103,15 @@ h1 {
 }
 
 .pagination {
-    display: flex;
     justify-content: center;
     margin-top: 30px;
 }
 
-.pagination button {
+::ng-deep pagination-controls .current {
+    background-color: #e2a12a !important; /* Set a background color for the active page */
+}
+
+/* .pagination button {
     background-color: #f8f9fa;
     border: 1px solid #ddd;
     padding: 10px 20px;
@@ -126,7 +129,7 @@ h1 {
 .pagination button:disabled {
     background-color: #ddd;
     cursor: not-allowed;
-}
+} */
 
 a {
     color: #004950;

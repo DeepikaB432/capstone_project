@@ -1,46 +1,12 @@
-<!-- <div class="container">
-    <h2 class="mt-5">Report a Pet</h2>
-    <form [formGroup]="petForm" method="post" enctype="multipart/form-data">
-        <div class="mb-3">
-            <label for="pet_type">Pet Type</label>
-            <select class="form-control" name="pet_type" formControlName="pet_type">
-                <option value="">Select Pet Type</option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="rabbit">Rabbit</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="location">Pet Name</label>
-            <input class="form-control" type="text" name="pet_name" formControlName="pet_name">
-        </div>
-        <div class="mb-3">
-            <label for="location">Location</label>
-            <input class="form-control" type="text" name="location" formControlName="location">
-        </div>
-        <div class="mb-3">
-            <label for="description">Description</label>
-            <textarea class="form-control" type="text" name="description" formControlName="description"></textarea>
-        </div>
-        <div class="mb-3">
-            <label for="contact_info">Contact Info</label>
-            <input class="form-control" type="text" name="contact_info" formControlName="contact_info">
-        </div>
-        <div class="mb-3">
-            <label for="file_upload">Choose File</label>
-            <input class="form-control" type="file" name="files" (change)="onFileSelect($event)" accept="image/*" />
-        </div>
-        <button class="btn mb-5" (click)="submitForm()">Submit</button>
-    </form>
-</div> -->
-
 <div class="container">
     <h2 *ngIf="!formSubmitted" class="mt-2">Report a Lost Pet</h2>
 
     <div *ngIf="formSubmitted" class="text-center">
         <h3>{{ successMessage }}</h3>
         <img src="/assets/images/th.jpg" alt="Thank You" class="mt-2" width="500px">
+    </div>
+    <div *ngIf="formSubmitted" class="mt-4">
+        <button class="btn btn-primary mb-2" routerLink="/lost-pets">View All Listings</button>
     </div>
 
     <form *ngIf="!formSubmitted" [formGroup]="petForm" method="post" enctype="multipart/form-data">

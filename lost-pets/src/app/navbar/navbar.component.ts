@@ -1,47 +1,41 @@
-import { Component, inject } from '@angular/core';
-import { RouterModule, RouterLink, Router } from '@angular/router';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Router,RouterModule  } from '@angular/router';
 import { PetsService } from '../pets.service';
+import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink,CommonModule,RouterModule],
+  imports: [RouterModule,CommonModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
 
-    petService:PetsService = inject(PetsService);
-    router:Router= inject(Router);
-    isAuthenticated :boolean = false;
-    token:any = '';
+export class NavbarComponent{
 
-    constructor(){
-      // this.token = localStorage.getItem('token');
-      // console.log(this.token)
-      // this.petService.isAuthenticated()
-    }
-    ngOnInit() {
+  isAuthenticated: boolean = false; 
+  private authStatusSubscription: Subscription | undefined;
 
+  petService: PetsService = inject(PetsService);
+  router: Router = inject(Router);
 
-      this.token = localStorage.getItem('token');
-      console.log("ngoninit changes" + this.token)
-      if (this.token) {
-        this.isAuthenticated = true;
-        console.log('Token exists:', this.token);
-      } else {
-        this.isAuthenticated = false;
-        console.log('Token does not exist');
+  ngOnInit(): void {
+    this.authStatusSubscription = this.petService.isAuthenticated$.subscribe(
+      (status) => {
+        this.isAuthenticated = status;
       }
-    }
+    );
+  }
 
-    ngOnChanges(){
-      console.log("ngOnChanges changes" + this.token)
+  ngOnDestroy(): void {
+    if (this.authStatusSubscription) {
+      this.authStatusSubscription.unsubscribe();
     }
+  }
 
-    logout(){
-      this.isAuthenticated = false;
-      localStorage.removeItem('token');
-      this.router.navigate(['signin']);
-    }
+  logout() {
+    this.petService.logout();  
+    this.router.navigate(['signin']); 
+  }
+  
 }
