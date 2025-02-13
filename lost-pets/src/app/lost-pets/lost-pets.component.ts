@@ -3,10 +3,11 @@ import { PetsService } from '../pets.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-lost-pets',
-  imports: [CommonModule, NgxPaginationModule],
+  imports: [CommonModule, NgxPaginationModule,RouterModule],
   templateUrl: './lost-pets.component.html',
   styleUrls: ['./lost-pets.component.css']
 })
